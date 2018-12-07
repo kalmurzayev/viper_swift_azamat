@@ -9,5 +9,8 @@
 import Foundation
 
 protocol {{ module_info.name }}InteractorInput {
-
+	/// Public method to perform an action with specified {{ module_info.name }}ActionRequest
+    ///
+    /// - Parameter request: Request-related data incapsulated in {{ module_info.name }}ActionRequest instance
+	func submit(request: {{ module_info.name }}ActionRequest)
 }

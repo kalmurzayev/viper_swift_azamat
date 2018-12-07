@@ -26,7 +26,9 @@ class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
         let assembly = {{ module_info.name }}ModuleAssembly()
         
         //when
-        let viewController = assembly.assemble { _ in }
+        let viewController = assembly.assemble { _ in 
+            return nil
+        }
 
         //then
         XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
@@ -49,11 +51,11 @@ class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
         var stopLoadingCalled = false
         var startEditingCalled = false
         var stopEditingCalled = false
-        override func display(viewModel: PaymentMobileViewModel) {
+        override func display(viewModel: {{ module_info.name }}ViewModel) {
             displayCalled = true
         }
     
-        override func show(errorData: PaymentMobileErrorViewModel) {
+        override func show(errorData: {{ module_info.name }}ErrorViewModel) {
             showErrorCalled = true
         }
     

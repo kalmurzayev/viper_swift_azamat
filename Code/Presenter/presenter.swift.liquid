@@ -6,7 +6,7 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-class {{ module_info.name }}Presenter {
+class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
     weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput!
     var router: {{ module_info.name }}RouterInput!
@@ -14,12 +14,10 @@ class {{ module_info.name }}Presenter {
     required init() {
     
     }
-}
 
-// MARK: - {{ module_info.name }}ViewOutput methods
-extension {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
+    // MARK: - {{ module_info.name }}ViewOutput methods
     func didLoad() {
-    	view?.display(viewModel: {{ module_info.name }}ViewModel())
+        view?.display(viewModel: {{ module_info.name }}ViewModel())
     }
 
     func didAppear() {
@@ -27,22 +25,26 @@ extension {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
     }
 
     func didDisappear() {
-    	view?.stopEditing()
+        view?.stopEditing()
     }
 
     func didTapSubmit() {
-    	view?.startLoading()
+        view?.startLoading()
     }
-}
 
-// MARK: - {{ module_info.name }}InteractorOutput methods
-extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutput {
-	
+    // MARK: - {{ module_info.name }}InteractorOutput methods
+    func didComplete(response: {{ module_info.name }}ActionResponse) {
+
+    }
+
+    func didNotComplete(error: Error) {
+    
+    }
 }
 
 // MARK: - {{ module_info.name }}ModuleInput methods
 extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput {
-	func configure() {
+	func configure(data: {{ module_info.name }}ConfigData) {
 
     }
 }

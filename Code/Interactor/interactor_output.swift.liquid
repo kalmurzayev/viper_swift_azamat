@@ -9,5 +9,12 @@
 import Foundation
 
 protocol {{ module_info.name }}InteractorOutput: class {
-
+	/// Output method called when Interactor action succeeds
+    ///
+    /// - Parameter response: {{ module_info.name }}ActionResponse instance encapsulating action-related data
+	func didComplete(response: {{ module_info.name }}ActionResponse)
+	/// Output method called when Interactor action completes with failure, retrieving Error object
+    ///
+    /// - Parameter error: Error object related to Interactor action failure
+	func didNotComplete(error: Error)
 }

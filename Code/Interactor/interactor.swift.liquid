@@ -11,4 +11,9 @@ class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorInput {
     required init() {
 	
 	}
+
+	func submit(request: {{ module_info.name }}ActionRequest) {
+		let response = {{ module_info.name }}ActionResponse()
+		output?.didComplete(response: response)
+	}
 }
