@@ -1,0 +1,51 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
+    weak var view: {{ module_info.name }}ViewInput?
+    var interactor: {{ module_info.name }}InteractorInput?
+    var router: {{ module_info.name }}RouterInput?
+    var state: {{ module_info.name }}StateContaining?
+    weak var moduleOutput: {{ module_info.name }}ModuleOutput?
+    required init() {
+    
+    }
+
+    // MARK: - {{ module_info.name }}ViewOutput methods
+    func didLoad() {
+        view?.display(viewModel: {{ module_info.name }}ViewModel())
+    }
+
+    func didAppear() {
+
+    }
+
+    func didDisappear() {
+        view?.stopEditing()
+    }
+
+    func didTapSubmit() {
+        view?.startLoading()
+    }
+
+    // MARK: - {{ module_info.name }}InteractorOutput methods
+    func didComplete(response: {{ module_info.name }}ActionResponse) {
+
+    }
+
+    func didNotComplete(error: Error) {
+    
+    }
+}
+
+// MARK: - {{ module_info.name }}ModuleInput methods
+extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput {
+	func configure(data: {{ module_info.name }}ConfigData) {
+
+    }
+}

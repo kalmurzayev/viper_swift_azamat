@@ -1,0 +1,48 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+protocol {{ module_info.name }}ViewManaging: UITableViewDataSource {
+	/// Customized UITableView instance requested by managed view
+	var customizedTable: UITableView { get }
+}
+
+class {{ module_info.name }}ViewManager: NSObject, {{ module_info.name }}ViewManaging {
+	private enum Constants {
+        static let cellIdentifier: String = "{{ module_info.name }}Cell"
+        static let cellHeight: CGFloat = 60
+    }
+
+    lazy private(set) var customizedTable: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .clear
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = Constants.cellHeight
+        tableView.rowHeight = Constants.cellHeight
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
+        return tableView
+    }()
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.cellIdentifier,
+            for: indexPath)
+        // add some customizations
+        return cell
+    }
+}

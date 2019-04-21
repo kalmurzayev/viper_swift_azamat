@@ -1,0 +1,32 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import am_kz
+class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
+
+    func testConfigureModuleForViewController() {
+
+        //given
+        let assembly = {{ module_info.name }}ModuleAssembly()
+        
+        //when
+        let viewController = assembly.assemble { _ in 
+            return nil
+        }
+
+        //then
+        XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
+        XCTAssertTrue(viewController.output is {{ module_info.name }}Presenter, "output is not {{ module_info.name }}Presenter")
+
+        let presenter: {{ module_info.name }}Presenter? = viewController.output as? {{ module_info.name }}Presenter
+        XCTAssertNotNil(presenter?.view, "view in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertNotNil(presenter?.router, "router in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertTrue(presenter!.router is {{ module_info.name }}Router, "router is not {{ module_info.name }}Router")
+    }
+}
