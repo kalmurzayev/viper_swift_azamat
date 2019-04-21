@@ -12,7 +12,7 @@ class {{ module_info.name }}Router: {{ module_info.name }}RouterInput {
 	
 	}
 	func routeBack() {
-
+		viewCtrl?.navigationController?.popViewController()
 	}
 	
 	func routeToNext() {

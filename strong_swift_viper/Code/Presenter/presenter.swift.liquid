@@ -7,10 +7,11 @@
 //
 
 class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
-    weak var view: {{ module_info.name }}ViewInput!
-    var interactor: {{ module_info.name }}InteractorInput!
-    var router: {{ module_info.name }}RouterInput!
+    weak var view: {{ module_info.name }}ViewInput?
+    var interactor: {{ module_info.name }}InteractorInput?
+    var router: {{ module_info.name }}RouterInput?
     var state: {{ module_info.name }}StateContaining?
+    var moduleOutput: {{ module_info.name }}ModuleOutput?
     required init() {
     
     }

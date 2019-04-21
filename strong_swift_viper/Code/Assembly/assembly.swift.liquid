@@ -29,7 +29,7 @@ class {{ module_info.name }}ModuleAssembly {
         interactor.output = presenter
         presenter.interactor = interactor
         viewController.output = presenter
-        configuration?(presenter)
+        presenter.moduleOutput = configuration?(presenter)
         return viewController
     }
 }
