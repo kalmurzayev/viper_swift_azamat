@@ -20,9 +20,6 @@ code_files:
 - {name: Presenter/ModuleOutput.swift, path: Code/Presenter/module_output.swift.liquid}
 - {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
 
-# State additional layer 
-- {name: State/State.swift, path: Code/State/state.swift.liquid}
-
 # Router layer
 - {name: Router/RouterInput.swift, path: Code/Router/router_input.swift.liquid}
 - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
