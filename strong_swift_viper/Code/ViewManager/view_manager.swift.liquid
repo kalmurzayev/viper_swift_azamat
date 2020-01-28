@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 protocol {{ module_info.name }}ViewManaging: UITableViewDataSource {
-	/// Customized UITableView instance requested by managed view
-	var customizedTable: UITableView { get }
+    /// Customized UITableView instance requested by managed view
+    var customizedTable: UITableView { get }
+    /// Abstract method to reload view built upon provided data
+    func reloadViewData()
 }
 
 class {{ module_info.name }}ViewManager: NSObject, {{ module_info.name }}ViewManaging {
-	private enum Constants {
+    private enum Constants {
         static let cellIdentifier: String = "{{ module_info.name }}Cell"
         static let cellHeight: CGFloat = 60
     }
@@ -29,6 +31,10 @@ class {{ module_info.name }}ViewManager: NSObject, {{ module_info.name }}ViewMan
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
         return tableView
     }()
+    
+    func reloadViewData() {
+        customizedTable.reloadData()
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

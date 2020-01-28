@@ -9,21 +9,16 @@
 import XCTest
 @testable import am_kz
 class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testModuleRegisteredInContainer() {
+        let assembly = AlfaInject.depContainer.inject(
+            {{ module_info.name }}ModuleAssemblying.self)
+        XCTAssertNotNil(assembly, "{{ module_info.name }}Module is registered in Swinject container")
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
+    
     func testConfigureModuleForViewController() {
 
         //given
-        let assembly = {{ module_info.name }}ModuleAssembly()
+        let assembly = {{ module_info.name }}ModuleAssembly(injection: AlfaInject.depContainer)
         
         //when
         let viewController = assembly.assemble { _ in 
@@ -41,38 +36,5 @@ class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
 
         let interactor: {{ module_info.name }}Interactor? = presenter?.interactor as? {{ module_info.name }}Interactor
         XCTAssertNotNil(interactor?.output, "output in {{ module_info.name }}Interactor is nil after configuration")
-    }
-
-    class {{ module_info.name }}ViewControllerMock: {{ module_info.name }}ViewController {
-
-        var displayCalled = false
-        var showErrorCalled = false
-        var startLoadingCalled = false
-        var stopLoadingCalled = false
-        var startEditingCalled = false
-        var stopEditingCalled = false
-        override func display(viewModel: {{ module_info.name }}ViewModel) {
-            displayCalled = true
-        }
-    
-        override func show(errorData: {{ module_info.name }}ErrorViewModel) {
-            showErrorCalled = true
-        }
-    
-        override func startLoading() {
-            startLoadingCalled = true
-        }
-    
-        override func stopLoading() {
-            stopLoadingCalled = true
-        }
-    
-        override func startEditing() {
-            startEditingCalled = true
-        }
-    
-        override func stopEditing() {
-            stopEditingCalled = true
-        }
     }
 }

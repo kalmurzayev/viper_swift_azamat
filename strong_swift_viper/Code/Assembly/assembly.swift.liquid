@@ -7,22 +7,15 @@
 //
 
 import UIKit
-typealias {{ module_info.name }}Configuration = ({{ module_info.name }}ModuleInput) -> {{ module_info.name }}ModuleOutput?
-class {{ module_info.name }}ModuleAssembly {
-    /// Assembles Module components and returns a target controller
-    ///
-    /// - Parameter configuration: optional configuration closure called by module owner
-    /// - Returns: Assembled module's ViewController
-    func assemble(_ configuration: {{ module_info.name }}Configuration? = nil) -> {{ module_info.name }}ViewController {
+class {{ module_info.name }}ModuleAssembly: BaseModuleAssembly, {{ module_info.name }}ModuleAssemblying {
+    func assemble(_ configuration: {{ module_info.name }}Configuration? = nil) -> UIViewController {
         let viewController = {{ module_info.name }}ViewController()
         let router = {{ module_info.name }}Router()
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
         presenter.router = router
         router.viewCtrl = viewController
-        let state = {{ module_info.name }}State() // remove if not needed
         let viewManager = {{ module_info.name }}ViewManager() // remove if not needed
-        presenter.state = state
         viewController.viewManager = viewManager
         
         let interactor = {{ module_info.name }}Interactor()

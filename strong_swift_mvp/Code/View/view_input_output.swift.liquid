@@ -6,11 +6,11 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-protocol {{ module_info.name }}ViewInput: class {
+protocol {{ module_info.name }}ViewOutput: BaseViewOutput {
+    
+}
+
+protocol {{ module_info.name }}ViewInput: BaseViewInput {
     func display(viewModel: {{ module_info.name }}ViewModel)
     func show(errorData: {{ module_info.name }}ErrorViewModel)
-    func startLoading()
-    func stopLoading()
-    func startEditing()
-    func stopEditing()
 }

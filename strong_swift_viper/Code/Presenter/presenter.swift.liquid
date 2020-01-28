@@ -7,22 +7,17 @@
 //
 
 class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
-    weak var view: {{ module_info.name }}ViewInput?
+    weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput?
     var router: {{ module_info.name }}RouterInput?
-    var state: {{ module_info.name }}StateContaining?
-    var moduleOutput: {{ module_info.name }}ModuleOutput?
-    required init() {
-    
-    }
-
+    weak var moduleOutput: {{ module_info.name }}ModuleOutput?
     // MARK: - {{ module_info.name }}ViewOutput methods
     func didLoad() {
         view?.display(viewModel: {{ module_info.name }}ViewModel())
     }
 
     func didAppear() {
-
+        
     }
 
     func didDisappear() {
@@ -39,7 +34,7 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ modu
     }
 
     func didNotComplete(error: Error) {
-    
+    	view?.stopLoading()
     }
 }
 

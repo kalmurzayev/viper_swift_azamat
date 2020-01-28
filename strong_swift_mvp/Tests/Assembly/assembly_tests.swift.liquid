@@ -1,5 +1,5 @@
 //
-//  {{ prefix }}{{ module_info.file_name }}
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -7,18 +7,26 @@
 //
 
 import XCTest
-@testable import {{ module_info.project_name }}
-
+@testable import am_kz
 class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
-
+    func testModuleRegisteredInContainer() {
+        let assembly = AlfaInject.depContainer.inject(
+            {{ module_info.name }}ModuleAssemblying.self)
+        XCTAssertNotNil(assembly, "{{ module_info.name }}Module is registered in Swinject container")
+    }
+    
     func testConfigureModuleForViewController() {
 
         //given
         let assembly = {{ module_info.name }}ModuleAssembly()
         
         //when
-        let viewController = assembly.assemble { _ in 
+        let vc = assembly.assemble { _ in
             return nil
+        }
+        guard let viewController = vc as? {{ module_info.name }}ViewController else {
+            XCTFail("Not a {{ module_info.name }}ViewController")
+            return
         }
 
         //then
@@ -27,7 +35,5 @@ class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
 
         let presenter: {{ module_info.name }}Presenter? = viewController.output as? {{ module_info.name }}Presenter
         XCTAssertNotNil(presenter?.view, "view in {{ module_info.name }}Presenter is nil after configuration")
-        XCTAssertNotNil(presenter?.router, "router in {{ module_info.name }}Presenter is nil after configuration")
-        XCTAssertTrue(presenter!.router is {{ module_info.name }}Router, "router is not {{ module_info.name }}Router")
     }
 }

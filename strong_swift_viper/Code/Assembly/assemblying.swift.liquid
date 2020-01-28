@@ -1,0 +1,18 @@
+//
+//  {{ prefix }}{{ module_info.name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+typealias {{ module_info.name }}Configuration = ({{ module_info.name }}ModuleInput) -> {{ module_info.name }}ModuleOutput?
+
+protocol {{ module_info.name }}ModuleAssemblying {
+	/// Assembles Module components and returns a target controller
+    ///
+    /// - Parameter configuration: optional configuration closure called by module owner
+    /// - Returns: Assembled module's ViewController
+    func assemble(_ configuration: {{ module_info.name }}Configuration?) -> UIViewController
+}

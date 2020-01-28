@@ -1,5 +1,5 @@
 //
-//  {{ module_info.file_name }}
+//  {{ module_info.name }}{{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -18,9 +18,9 @@ class {{ module_info.name }}ViewController: UIViewController, {{module_info.name
         output?.didLoad()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
         output?.didAppear()
+        super.viewWillAppear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

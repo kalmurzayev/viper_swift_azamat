@@ -7,15 +7,6 @@
 //
 
 class {{ module_info.name }}Router: {{ module_info.name }}RouterInput {
-	var viewCtrl: UIViewController?
-	required init() {
+	weak var viewCtrl: UIViewController?
 	
-	}
-	func routeBack() {
-		viewCtrl?.navigationController?.popViewController()
-	}
-	
-	func routeToNext() {
-
-	}
 }

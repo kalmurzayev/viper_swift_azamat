@@ -7,8 +7,7 @@ author: "Azamat Kalmurzayev"
 
 code_files:
 # View layer
-- {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
-- {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
+- {name: View/ViewInputOutput.swift,  path: Code/View/view_input_output.swift.liquid}
 - {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
 - {name: View/ViewModels.swift, path: Code/View/view_model.swift.liquid}
 
@@ -16,12 +15,8 @@ code_files:
 - {name: ViewManager/ViewManager.swift,  path: Code/ViewManager/view_manager.swift.liquid}
 
 # Presenter layer
-- {name: Presenter/ModuleInput.swift, path: Code/Presenter/module_input.swift.liquid}
-- {name: Presenter/ModuleOutput.swift, path: Code/Presenter/module_output.swift.liquid}
+- {name: Presenter/ModuleInputOutput.swift, path: Code/Presenter/module_input_output.swift.liquid}
 - {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
-
-# State additional layer 
-- {name: State/State.swift, path: Code/State/state.swift.liquid}
 
 # Interactor layer
 - {name: Interactor/InteractorInput.swift, path: Code/Interactor/interactor_input.swift.liquid}
@@ -34,6 +29,7 @@ code_files:
 - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
 
 # Assembly
+- {name: Assembly/Assemblying.swift, path: Code/Assembly/assemblying.swift.liquid}
 - {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
 
 # The declarations for test files
@@ -45,11 +41,5 @@ test_files:
 # View tests
 - {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
 
-# Interactor tests
-- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
-
 # Presenter tests
 - {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
-
-# Router tests
-- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}

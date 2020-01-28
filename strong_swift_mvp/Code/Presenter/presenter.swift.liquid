@@ -1,5 +1,5 @@
 //
-//  {{ module_info.file_name }}
+//  {{ module_info.name }}{{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -8,8 +8,8 @@
 
 class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
     weak var view: {{ module_info.name }}ViewInput?
-    var router: {{ module_info.name }}RouterInput?
     weak var moduleOutput: {{ module_info.name }}ModuleOutput?
+    private var configData: {{ module_info.name }}ConfigData?
     required init() {
     
     }
@@ -35,6 +35,6 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
 // MARK: - {{ module_info.name }}ModuleInput methods
 extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput {
 	func configure(data: {{ module_info.name }}ConfigData) {
-
+        self.configData = data
     }
 }

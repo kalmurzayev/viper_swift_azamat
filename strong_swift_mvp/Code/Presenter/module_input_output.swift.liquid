@@ -1,5 +1,5 @@
 //
-//  {{ module_info.file_name }}
+//  {{ module_info.name }}{{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -11,9 +11,16 @@
 struct {{ module_info.name }}ConfigData {
     
 }
+
 /// Protocol with public methods to configure {{ module_info.name }} from its parent module (usually implemented by this module's Presenter)
 
 protocol {{ module_info.name }}ModuleInput: class {
 	/// public configuration method for parent modules (add configurating parameters)
     func configure(data: {{ module_info.name }}ConfigData)
+}
+
+/// Protocol for parent modules to implement module result/output event methods (usually implemented by Parent module Presenter)
+protocol {{ module_info.name }}ModuleOutput: class {
+    /// Module output method to pass some result
+    func didEnter(something: String)
 }
